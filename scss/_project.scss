@@ -1,0 +1,91 @@
+.projects{
+    padding-bottom: 2rem;
+
+    &_bio_image{
+        height: 30vh;
+        width: 100%;
+        background:
+    linear-gradient(to right,rgba($primary_color,0.9),rgba($primary_color,0.1)),//color&Opacity
+    url(../img/model-1.jpg) center top;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    
+       .text_secondary{
+           font-size: 2rem;
+           margin-bottom: 2rem;
+       }
+    }
+
+&_items{
+    width: 60vw;
+    margin: 2rem auto 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem;
+    padding-bottom: 2rem;
+}
+&_item{
+    position: relative;
+    border-bottom: 5px solid $secondary_color;
+    overflow: hidden;
+    cursor: pointer;
+    img{
+        width: 100%;
+    }
+    &::after{
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        background: $secondary_color;
+        @include transition_ease;
+    }
+    &:hover{
+        &::after{
+            top: 0;
+            opacity: 0.9;
+        }
+        .projects_btn{
+
+            opacity: 1;
+        }
+    }
+}
+&_btns{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    text-align: center;
+    z-index: 1;
+}
+&_btn{
+    opacity: 0;
+    // Specify the width, style, and color of the rule between columns:
+    // why we created set-text-color is answered here-> as we have background of secondary
+    // color we need such a color to rule line so that it's visible on top of background
+    // if background is dark front rule is light and vice versa
+    color: set-text-color($secondary_color);
+    @include transition_ease;
+
+    &:hover{
+        color: set-text-color(set-text-color($secondary_color));        //white get black
+    }
+}
+.social_icon{
+    display: flex;
+    flex-direction: column;
+}
+footer{
+    transform: rotate(90deg) translate(-3rem,-5rem);
+}
+}
